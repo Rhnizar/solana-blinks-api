@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+# nginx service
+  nginx:
+    build: ./frontend
+    container_name: nginx
+    volumes:
+      - ./frontend/src/:/var/www/html
+    ports:
+      - 8080:8080
+    networks:
+      - app_network
+    env_file:
+      - .env
+
+# back-end service
+  back-end:
+    build: ./backend
+    container_name: back-end
+    volumes:
+      - ./backend/src/:/app
+    ports:
+      - 8000:8000
+    networks:
+      - app_network
+    env_file:
+      - .env
+
+
+networks:
+  app_network:
+    driver: bridge
