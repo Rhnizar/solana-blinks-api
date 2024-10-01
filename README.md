@@ -38,4 +38,5 @@ solana-api-server/
    cd solana-api-server
 
 2. Run Command:
+    ```bash
     docker-compose up --build
